@@ -10,7 +10,6 @@ def getHTMLText(url):
     try:
         r = requests.get(url, timeout=30)
         r.raise_for_status()
-        print r.encoding + "--" + r.apparent_encoding
         r.encoding = r.apparent_encoding
         return r.text
     except:
@@ -30,7 +29,7 @@ def parsePage(ilt, html):
 
 def  printGoodsList(ilt):
     tplt = "{:4}\t{:10}\t{:16}"
-    print(tplt.format("排名","学校名称","总分"))
+    print(tplt.format("排序","商品价格","商品名称"))
     count = 0
 
     for g in ilt:
