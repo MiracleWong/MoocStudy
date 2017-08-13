@@ -10,7 +10,7 @@ import bs4
 reload(sys)
 sys.setdefaultencoding( "utf-8" )
 
-def getHTMLText(url):
+def getHTMLText(url): 
     try:
         r = requests.get(url, timeout=30)
         r.raise_for_status()

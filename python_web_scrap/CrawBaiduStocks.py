@@ -88,7 +88,7 @@ def main():
     output_file = "/Users/miraclewong/github/MoocStudy/python_web_scrap/BaiduStocks.txt"
     getStockList(stocksList,stock_list_url)
     getStockInfo(stocksList,stock_info_url)
-    # getStockInfo(stocksList,stock_info_url, output_file)
+    getStockInfo(stocksList,stock_info_url, output_file)
 
 if __name__ == '__main__':
     main()

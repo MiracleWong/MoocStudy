@@ -6,6 +6,7 @@ import re
 import sys
 import os
 
+# 获取HTML Text
 def getHTMLText(url):
     try:
         r = requests.get(url, timeout=30)
@@ -36,6 +37,7 @@ def  printGoodsList(ilt):
         count += 1
         print(tplt.format(count,g[0],g[1]))
 
+# 主函数
 def main():
     goods = '书包'
     depth = 2
@@ -51,5 +53,6 @@ def main():
     printGoodsList(infoList)
 
 
+# 程序总入口
 if __name__ == '__main__':
     main()
