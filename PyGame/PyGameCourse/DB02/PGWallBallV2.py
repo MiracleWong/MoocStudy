@@ -11,7 +11,7 @@ screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Pygame壁球")
 ball = pygame.image.load("PYG02-ball.gif")
 ballrect = ball.get_rect()
-fps = 300
+fps = 500
 fclock = pygame.time.Clock()
 
 while True:
@@ -27,4 +27,4 @@ while True:
     screen.fill(BLACK)
     screen.blit(ball, ballrect)
     pygame.display.update()
-    fclock.tick(fps)
+    fclock.tick(fps)  # 刷新的频率
