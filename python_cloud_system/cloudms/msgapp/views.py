@@ -1,7 +1,10 @@
+import os
+
 from django.shortcuts import render
 
 # Create your views here.
 from datetime import datetime
+from django.http import HttpResponse, JsonResponse, FileResponse
 
 
 # Create your views here.
@@ -30,3 +33,21 @@ def msgproc(request):
                     if cnt >= 10:
                         break
     return render(request, "MsgSingleWeb.html", {"data": datalist})
+
+
+def homeproc(request):
+    responce = HttpResponse()
+    responce.write("<h1>这是首页，具体功能请访问<a href='./msggate'>这里</a></h1>")
+    responce.write("<h1>这是第二行</h1>")
+    return responce
+
+def homeproc1(request):
+    responce = JsonResponse({'key1': 'value1'})
+    return responce
+
+def homeproc2(request):
+    cwd = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    response = FileResponse(open(cwd + '/msgapp/templates/PyLogo.png', "rb"))
+    response['Content-Type'] = 'application/octet-stream'
+    response['Content-Disposition'] = 'attachment;filename="pylogo.png"'
+    return response
