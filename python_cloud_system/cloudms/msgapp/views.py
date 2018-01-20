@@ -5,6 +5,7 @@ from django.shortcuts import render
 # Create your views here.
 from datetime import datetime
 from django.http import HttpResponse, JsonResponse, FileResponse
+from django.template import Template, Context
 
 
 # Create your views here.
@@ -51,3 +52,8 @@ def homeproc2(request):
     response['Content-Type'] = 'application/octet-stream'
     response['Content-Disposition'] = 'attachment;filename="pylogo.png"'
     return response
+
+def pgproc(request):
+    template = Template("<h1>这个程序的名字是{{ name }}</h1>")
+    context = Context({"name": "实验平台"})
+    return HttpResponse(template.render(context))
