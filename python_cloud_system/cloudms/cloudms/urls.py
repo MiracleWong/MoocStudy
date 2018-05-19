@@ -20,6 +20,6 @@ from msgapp import views as msgviews
 urlpatterns = [
     path('msggate/', include("msgapp.urls")),
     path('admin/', admin.site.urls),
-    path('', msgviews.homeproc2),
+    path('', msgviews.homeproc),
     path('playground', msgviews.pgproc)
 ]
