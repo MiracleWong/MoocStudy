@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/anaconda3/bin/python
 #-*- coding:utf8 -*-
 
 from bs4 import BeautifulSoup
@@ -7,6 +7,7 @@ import sys
 import os
 import re
 import traceback
+
 
 def getHTMLText(url, code='utf-8'):
     try:
@@ -18,8 +19,9 @@ def getHTMLText(url, code='utf-8'):
     except:
         return ""
 
+
 def getStockList(lst, stockURL):
-    html = getHTMLText(stockURL,'GB2312')
+    html = getHTMLText(stockURL, 'GB2312')
     soup = BeautifulSoup(html, 'html.parser')
     a = soup.find_all('a')
     for i in a:
@@ -28,6 +30,8 @@ def getStockList(lst, stockURL):
             lst.append(re.findall(r"[s][hz]\d{6}", href)[0])
         except:
             continue
+
+
 def getStockInfo(lst, stockURL, fpath):
     count = 0
     for stock in lst:
@@ -37,10 +41,10 @@ def getStockInfo(lst, stockURL, fpath):
         try:
             if html == "":
                 continue
-            infoDict={}
+            infoDict = {}
             soup = BeautifulSoup(html, 'html.parser')
-            stockInfo = soup.find('div', attrs={'class':'stock-bets'})
-            name = stockInfo.find(attrs={'class':'bets-name'})
+            stockInfo = soup.find('div', attrs={'class': 'stock-bets'})
+            name = stockInfo.find(attrs={'class': 'bets-name'})
             print type(name)
             # infoDict.update({'股票名称':name.text.split()[0]})
 
@@ -56,6 +60,7 @@ def getStockInfo(lst, stockURL, fpath):
             traceback.print_exc()
             # continue
 
+
 def getStockInfo(lst, stockURL):
     count = 0
 
@@ -65,7 +70,7 @@ def getStockInfo(lst, stockURL):
     html = getHTMLText(url)
     print html
     try:
-        infoDict={}
+        infoDict = {}
         # soup = BeautifulSoup(html, 'html.parser')
         # stockInfo = soup.find('div', attrs={'class':'stock-bets'})
         # name = stockInfo.find(attrs={'class':'bets-name'})
@@ -81,14 +86,16 @@ def getStockInfo(lst, stockURL):
     except:
         traceback.print_exc()
 
+
 def main():
     stock_list_url = 'http://quote.eastmoney.com/stocklist.html'
     stock_info_url = 'https://gupiao.baidu.com/stock/'
     stocksList = []
     output_file = "/Users/miraclewong/github/MoocStudy/python_web_scrap/BaiduStocks.txt"
-    getStockList(stocksList,stock_list_url)
-    getStockInfo(stocksList,stock_info_url)
-    getStockInfo(stocksList,stock_info_url, output_file)
+    getStockList(stocksList, stock_list_url)
+    getStockInfo(stocksList, stock_info_url)
+    getStockInfo(stocksList, stock_info_url, output_file)
+
 
 if __name__ == '__main__':
     main()

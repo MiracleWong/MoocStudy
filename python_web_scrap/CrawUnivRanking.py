@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/anaconda3/bin/python
 # -*- coding:utf-8 -*-
 
 import sys
@@ -8,16 +8,16 @@ from bs4 import BeautifulSoup
 
 # Python 的编码格式
 reload(sys)
-sys.setdefaultencoding( "utf-8" )
+sys.setdefaultencoding("utf-8")
 
 
 def getHTMLText(url):
     try:
-        r = requests.get(url, timeout = 30)
+        r = requests.get(url, timeout=30)
         r.raise_for_status()
         r.encoding = r.apparent_encoding
         return r.text
-    except :
+    except:
         return ""
 
 
@@ -44,6 +44,6 @@ def main():
     fillunivList(uinfo, html)
     printUnivList(uinfo, 20)
 
+
 if __name__ == '__main__':
     main()
-
